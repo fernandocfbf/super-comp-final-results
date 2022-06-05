@@ -64,6 +64,11 @@ def project_results(results, start, end):
         res[algorithm] = {'result': x_projected, 'clock': y_projected}
     return res
 
+def cut_dictionary(dic, desired_keys):
+    res = dict()
+    for key in desired_keys:
+        res[key] = dic[key]
+    return res
 
 def print_lines(results, n_size, title, x_label, y_label, value):
     for key in results:
