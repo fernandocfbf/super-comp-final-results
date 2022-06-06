@@ -7,10 +7,13 @@ from tqdm import tqdm
 import pickle as pk
 
 translate_key = {
-    "exe1": "heuristic solution",
-    "exe2": "local search",
-    "exe3": "exaustive search [01]",
-    "exe4": "exaustive search [02]",
+    "exe1": "solução heurística",
+    "exe2": "busca local",
+    "exe3": "busca exaustiva [01]",
+    "exe4": "busca exaustiva [02]",
+    "exe5": "busca exaustiva [CPU]",
+    "exe6": "busca exaustiva [GPU]",
+    "exe7": "busca local",
 }
 
 def get_n_sizes(file):
@@ -37,8 +40,8 @@ def load_results(path):
 def run_multiple_times(exe_list, file_list, save=False, path="./results/hle.pkl"):
     res = dict()
     for exe in exe_list:
+        print("running {0}".format(exe))
         res[exe] = {"result": [], "clock": []}
-        #print("running {0}".format(translate_key[exe]))
         for i in range(len(file_list)):
             file = file_list[i]
             result, clock = run_with_input(exe, file)
